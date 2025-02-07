@@ -145,17 +145,15 @@ Option 2: Install XAMPP / WampServer
 5. To stop the server:
    - Press Ctrl+C in the terminal where the server is running
    - If Ctrl+C doesn't work:
-     ```bash
+     ```cmd
      # Find the process using port 8000
-     ps aux | grep php
-     # or
-     lsof -i :8000
-
-     # Kill it using the process ID
-     sudo kill -9 <process_id>
-
-     # Or use this one-liner
-     sudo kill -9 $(lsof -t -i:8000)
+     netstat -ano | findstr :8000
+     
+     # Kill it using the process ID (replace PID with the number from above)
+     taskkill /PID PID /F
+     
+     # Or use this one-liner to find and kill
+     for /f "tokens=5" %a in ('netstat -aon ^| find ":8000"') do taskkill /f /pid %a
      ```
 
 #### Windows-Specific Troubleshooting
