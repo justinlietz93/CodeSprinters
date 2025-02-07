@@ -1,14 +1,11 @@
 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
-        <li
-            <?php
-            if(isset($dashboard)){
-                echo " class='active'";
-            }
-            ?>
-        >
-            <a href="/site/admin/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+        <li class="<?php echo $this->uri->segment(2) == 'dashboard' ? 'active' : ''; ?>">
+            <a href="<?php echo site_url('admin/dashboard'); ?>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="<?php echo $this->uri->segment(2) == 'charts' ? 'active' : ''; ?>">
+            <a href="<?php echo site_url('admin/charts'); ?>"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
         </li>
         <li
             <?php

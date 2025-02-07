@@ -46,7 +46,7 @@
             <div class="container-fluid">
 
                 <div class="row">
-                    <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                         <h2>Dashboard</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
@@ -102,7 +102,33 @@
                                         <td></td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table> -->
+                    <div class="col-md-12">
+                        <h1>Admin Dashboard</h1>
+                        <p>Welcome, <?php echo $this->session->userdata('username'); ?></p>
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Manage Races</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <a href="<?php echo base_url('admin/races'); ?>" class="btn btn-primary">View Races</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Manage Users</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <a href="<?php echo base_url('admin/users'); ?>" class="btn btn-primary">View Users</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

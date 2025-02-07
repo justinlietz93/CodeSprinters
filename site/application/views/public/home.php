@@ -184,13 +184,16 @@
                 <div class="col-lg-1 col-sm-1"></div>
                 <div class="col-lg-4 col-sm-5">
                     <h1>Login</h1>
-                    <?php
-                        echo form_open('home/login');
-                        echo form_input('user_name','','placeholder="User Name"')."<br/>";
-                        echo form_password('password','','placeholder="Password"')."<br/>";
-                        echo form_submit('submit','Login')."<br/>";
-                        echo form_close();
-                    ?>
+                    <!-- Login Form -->
+                    <form action="<?php echo base_url('home/login'); ?>" method="post">
+                        <div class="form-group">
+                            <input type="email" name="user_name" class="form-control" placeholder="User Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 col-sm-5">
                     <h1>Create Account</h1>

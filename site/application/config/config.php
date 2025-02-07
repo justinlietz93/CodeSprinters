@@ -1,4 +1,8 @@
 <?php
+// error reporting
+error_reporting(E_ALL & ~E_DEPRECATED);
+ini_set('display_errors', 0);
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -23,7 +27,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+// Detect if using PHP's built-in server
+if (php_sapi_name() === 'cli-server') {
+    $config['base_url'] = 'http://localhost:8000/';
+} else {
+    $config['base_url'] = 'http://localhost/site/';
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +44,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

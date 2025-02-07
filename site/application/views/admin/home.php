@@ -153,22 +153,22 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="<?php echo base_url('admin/dashboard'); ?>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="4.php"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a href="<?php echo base_url('admin/charts'); ?>"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
-                        <a href="../../../../../../Downloads/Admin/startbootstrap-sb-admin-gh-pages/tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                        <a href="<?php echo base_url('admin/tables'); ?>"><i class="fa fa-fw fa-table"></i> Tables</a>
                     </li>
                     <li>
-                        <a href="5.php"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                        <a href="<?php echo base_url('admin/forms'); ?>"><i class="fa fa-fw fa-edit"></i> Forms</a>
                     </li>
                     <li>
-                        <a href="2.php"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                        <a href="<?php echo base_url('admin/elements'); ?>"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
                     </li>
                     <li>
-                        <a href="3.php"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                        <a href="<?php echo base_url('admin/grid'); ?>"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
@@ -182,10 +182,10 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="1.php"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                        <a href="<?php echo base_url('admin/blank'); ?>"><i class="fa fa-fw fa-file"></i> Blank Page</a>
                     </li>
                     <li>
-                        <a href="6.php"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                        <a href="<?php echo base_url('admin/rtl'); ?>"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
                     </li>
                 </ul>
             </div>

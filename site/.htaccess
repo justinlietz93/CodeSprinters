@@ -1,7 +1,14 @@
 RewriteEngine On
 RewriteBase /site/
 
+# Allow any files or directories that exist
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^ index.php [QSA,L]
+
+# Suppress PHP deprecation warnings
+php_flag display_startup_errors off
+php_flag display_errors off
+php_flag html_errors off
+php_value error_reporting 22527

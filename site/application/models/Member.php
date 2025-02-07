@@ -3,66 +3,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Member extends CI_Model {
 
-    public function user_login($email,$pwd)
+    public function user_login($username, $password)
     {
-        $this->load->database();
-        $this->load->library('session');
+        $this->db->where('UserName', $username);
+        $this->db->where('Password', $password);
+        $query = $this->db->get('Users');
+        
+        if($query->num_rows() == 1){
+            $user = $query->row();
+            // Set session data
+            $this->session->set_userdata([
+                'user_id' => $user->UserId,
+                'user_type' => $user->UserTypeID,
+                'username' => $user->UserName,
+                'logged_in' => TRUE
+            ]);
+            return $user->UserTypeID;
+        }
+        return 0;  // Return 0 for failed login
+    }
 
-        try {
-            $db = new PDO($this->db->dsn, $this->db->username, $this->db->password, $this->db->options);
-            $sql = $db->prepare("select memberID, memberPassword, memberKey from memberLogin where memberEmail = :Email and RoleID = 2");
-            $sql->bindValue(":Email", $email);
-            $sql->execute();
-            $row = $sql->fetch();
-
-            if ($row != null) {
-                $hashedPassword = md5($pwd . $row["memberKey"]);
-
-                if ($hashedPassword == $row["memberPassword"]) {
-                    $this->session->set_userdata(array("UID" => $row["memberID"]));
-                    return true;
-                } else {
-                    return false;
-                }
-            }else{
-                return false;
-            }
-
-        }catch (PDOException $e){
+    public function add_user($fullname, $email, $password, $retype_password)
+    {
+        if($password != $retype_password) {
             return false;
         }
+
+        // Check if username/email already exists
+        $this->db->where('UserName', $email);
+        if($this->db->get('Users')->num_rows() > 0) {
+            return false;
+        }
+
+        $data = array(
+            'UserName' => $email,
+            'Password' => $password,
+            'UserTypeID' => 3  // Default to Runner type
+        );
+
+        return $this->db->insert('Users', $data);
     }
 
-    public function add_user($FName, $Email, $Password)
+    public function get_user_type($user_id)
     {
-        $key = sprintf('%04X%04X%04X%04X%04X%04X%04X%04X' , mt_rand(0, 65535) ,mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 65535), mt_rand(32768, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
-            try {
-                $db = new PDO($this->db->dsn, $this->db->username, $this->db->password, $this->db->options);
-                $sql = $db->prepare("insert into memberLogin (memberName, memberEmail, memberPassword, memberKey) VALUE (:Name, :Email, :Password, :Key)");
-                $sql->bindValue(":Name", $FName);
-                $sql->bindValue(":Email", $Email);
-                $sql->bindValue(":Password", md5($Password . $key));
-                $sql->bindValue(":Key", $key);
-
-                $sql->execute();
-                $row = $sql->fetch();
-
-                if ($row != null) {
-                    $hashedPassword = md5($Password . $row["memberKey"]);
-
-                    if ($hashedPassword == $row["memberPassword"]) {
-                        $this->session->set_userdata(array("UID" => $row["memberID"]));
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }else{
-                    return false;
-                }
-
-            }catch (PDOException $e){
-                return false;
-            }
+        $this->db->select('UserTypes.Type');
+        $this->db->from('Users');
+        $this->db->join('UserTypes', 'Users.UserTypeID = UserTypes.UserTypeId');
+        $this->db->where('Users.UserId', $user_id);
+        $query = $this->db->get();
+        
+        if($query->num_rows() == 1){
+            return $query->row()->Type;
+        }
+        return false;
     }
-
 }

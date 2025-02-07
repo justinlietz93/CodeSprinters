@@ -27,23 +27,39 @@ class Home extends CI_Controller {
     public function login()
     {
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('user_name','User Name','trim|required|valid_email');
-        $this->form_validation->set_rules('password','Password','trim|required');
+        $this->form_validation->set_rules('user_name', 'User Name', 'trim|required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
-        if($this->form_validation->run() == false){
-            $data = array('load_error'=>'true');
-            $this->load->view('public/home',$data);
-        }else{
-            //Data Stuff
+        if ($this->form_validation->run() == false) {
+            $this->load->view('public/home');
+        } else {
             $this->load->model('Member');
+            $username = $this->input->post('user_name');
+            $password = $this->input->post('password');
 
-            if($this->Member->user_login($this->input->post('user_name'),$this->input->post('password'))){
-                $this->load->view('admin/home');
-                echo "Member Added";
-            }else{
-                //Bad Password
-                $data = array('load_error'=>'true','error_message'=>'Invalid Username or Password');
-                $this->load->view('public/home',$data);
+            $login_result = $this->Member->user_login($username, $password);
+            if ($login_result) {
+                // Check user type
+                $user_type = $this->session->userdata('user_type');
+                
+                switch($user_type) {
+                    case 1: // Admin
+                        redirect('admin/dashboard');
+                        break;
+                    case 2: // Organizer
+                        redirect('organizer/dashboard');
+                        break;
+                    case 3: // Runner
+                        redirect('runner/dashboard');
+                        break;
+                    default:
+                        $data['error_message'] = 'Invalid user type';
+                        $this->load->view('public/home', $data);
+                }
+            } else {
+                // Failed login
+                $data['error_message'] = 'Invalid username or password';
+                $this->load->view('public/home', $data);
             }
         }
     }
