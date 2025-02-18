@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * | Change History
+ * |----------------------------------------------------------------------------------
+ * | Date         | Developer      | Description
+ * |----------------------------------------------------------------------------------
+ * | 2024-02-17  | Justin         | Wired up the member model
+ * 
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Member extends CI_Model {
@@ -56,5 +65,31 @@ class Member extends CI_Model {
             return $query->row()->Type;
         }
         return false;
+    }
+
+    public function get_member($id) {
+        // dummy data for now since we don't have a full database
+        return array(
+            'id' => $id,
+            'username' => $this->session->userdata('username'),
+            'name' => 'Runner',
+            'email' => 'runner@codesprinter.com',
+            'phone' => '555-0123'
+        );
+    }
+
+    public function update_member($id, $data) {
+        // Will implement database update later
+        return true;
+    }
+
+    public function change_password($id, $current_password, $new_password) {
+        // Will implement password change later
+        return true;
+    }
+
+    public function update_profile_pic($id, $filename) {
+        // return true since we don't have the database set up
+        return true;
     }
 }

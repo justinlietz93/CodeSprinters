@@ -1,7 +1,14 @@
-<!DOCTYPE html>
+<?php
+/**
+ * | Change History
+ * |----------------------------------------------------------------------------------
+ * | Date         | Developer      | Description
+ * |----------------------------------------------------------------------------------
+ * | 2024-02-17  | Justin         | Wired up the dashboard page
+ * 
+ */
+?>
 <html lang="en">
-
-<head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,8 +43,8 @@
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <?php
-            $this->load->view('includes/header');
-            $this->load->view('includes/menu');
+                $this->load->view('includes/header');
+                $this->load->view('includes/menu');
             ?>
         </nav>
 
@@ -46,63 +53,7 @@
             <div class="container-fluid">
 
                 <div class="row">
-                <!-- <div class="col-lg-6">
-                        <h2>Dashboard</h2>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Marathon</th>
-                                        <th>Number of Runners</th>
-                                        <th>Registration Date</th>
-                                        <th>Start Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="active">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="success">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="warning">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="danger">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table> -->
+                
                     <div class="col-md-12">
                         <h1>Admin Dashboard</h1>
                         <p>Welcome, <?php echo $this->session->userdata('username'); ?></p>
@@ -114,7 +65,7 @@
                                         <h3 class="panel-title">Manage Races</h3>
                                     </div>
                                     <div class="panel-body">
-                                        <a href="<?php echo base_url('admin/races'); ?>" class="btn btn-primary">View Races</a>
+                                        <a href="<?php echo site_url('admin/manage_marathons'); ?>" class="btn btn-primary">View Races</a>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +76,7 @@
                                         <h3 class="panel-title">Manage Users</h3>
                                     </div>
                                     <div class="panel-body">
-                                        <a href="<?php echo base_url('admin/users'); ?>" class="btn btn-primary">View Users</a>
+                                        <a href="<?php echo site_url('admin/manage_runners'); ?>" class="btn btn-primary">View Users</a>
                                     </div>
                                 </div>
                             </div>

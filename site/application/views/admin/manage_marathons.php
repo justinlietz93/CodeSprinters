@@ -1,7 +1,13 @@
-<!DOCTYPE html>
+<?php
+/**
+ * | Change History
+ * |----------------------------------------------------------------------------------
+ * | Date         | Developer      | Description
+ * |----------------------------------------------------------------------------------
+ * | 2024-02-17  | Justin         | Wired up the manage marathons page
+ */
+?>
 <html lang="en">
-
-<head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,59 +51,61 @@
 
             <div class="container-fluid">
 
-                <div id="page-wrapper">
-
-                    <div class="container-fluid">
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <h2>Manage Marathons</h2>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Manage Marathons
+                        </h1>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Marathon Name</th>
+                                        <th>Location</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if(isset($races) && is_array($races)): ?>
+                                        <?php foreach($races as $race): ?>
+                                            <tr>
+                                                <td><?php echo $race['raceName']; ?></td>
+                                                <td><?php echo $race['raceLocation']; ?></td>
+                                                <td><?php echo $race['raceDateTime']; ?></td>
+                                                <td>
+                                                    <a href="<?php echo site_url('admin/update_race/'.$race['raceID']); ?>" class="btn btn-primary btn-sm">Edit</a>
+                                                    <a href="<?php echo site_url('admin/delete_race/'.$race['raceID']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
                                         <tr>
-                                            <th>Marathon Name</th>
-                                            <th>Location</th>
-                                            <th>Date</th>
-                                            <th>Actions</th>
+                                            <td colspan="4">No marathons found</td>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            <?php
-
-                                            foreach ($races as $race){
-                                                $name = $race['raceName'];
-                                                $location = $race['raceLocation'];
-                                                $date = $race['raceDateTime'];
-                                                $id = $race['raceID'];
-
-                                                echo "<tr><td>$name</td><td>$location</td><td>$date</td><td> <a href='/site/admin/update_race/" . $id . "'> Edit</a> | <a href='/site/admin/delete_race/" . $id . "'> Delete</a></td></tr>";
-                                            }
-
-                                            ?>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
                         </div>
-                        <!-- /.row -->
-
+                        <a href="<?php echo site_url('admin/add_marathon'); ?>" class="btn btn-success">Add New Marathon</a>
                     </div>
-                    <!-- /.container-fluid -->
-
                 </div>
-                <!-- /#page-wrapper -->
+                <!-- /.row -->
 
             </div>
-            <!-- /#wrapper -->
+            <!-- /.container-fluid -->
 
-            <!-- jQuery -->
-            <script src="<?=asset_url()?>js/jquery.js"></script>
+        </div>
+        <!-- /#page-wrapper -->
 
-            <!-- Bootstrap Core JavaScript -->
-            <script src="<?=asset_url()?>js/bootstrap.min.js"></script>
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="<?=asset_url()?>js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?=asset_url()?>js/bootstrap.min.js"></script>
 
 </body>
 

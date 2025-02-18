@@ -4,6 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller {
 
 	/**
+	 * | Change History
+	 * |----------------------------------------------------------------------------------
+	 * | Date         | Developer      | Description
+	 * |----------------------------------------------------------------------------------
+	 * | 2024-02-17  | Justin         | Added routing logic for admin dashboard
+
+	 * 
 	 * Index Page for this controller.
 	 *
 	 * Maps to the following URL
@@ -19,7 +26,7 @@ class Admin extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
     public function index() {
-        redirect('admin/dashboard');
+        redirect('admin/home');
     }
 
 	public function __construct() {
@@ -31,6 +38,11 @@ class Admin extends CI_Controller {
 	}
 
 	public function dashboard() {
+		$data = array('dashboard'=>'true');
+		$this->load->view('admin/dashboard', $data);
+	}
+
+	public function home() {
 		$data = array('dashboard'=>'true');
 		$this->load->view('admin/home', $data);
 	}
@@ -65,8 +77,10 @@ class Admin extends CI_Controller {
 
 	public function manage_marathons() {
 		$this->load->model('Race');
-		$data=array('manage_marathons'=>'true');
-		$data['races'] = $this->Race->get_races();
+		$data = array(
+			'manage_marathons' => 'true',
+			'races' => $this->Race->get_races()
+		);
 		$this->load->view('admin/manage_marathons', $data);
 	}
 
@@ -76,7 +90,11 @@ class Admin extends CI_Controller {
 	}
 
 	public function manage_runners() {
-		$data=array('manage_runners'=>'true');
+		$this->load->model('Runner');
+		$data = array(
+			'manage_runners' => 'true',
+			'runners' => $this->Runner->get_runners()
+		);
 		$this->load->view('admin/manage_runners', $data);
 	}
 
@@ -86,11 +104,13 @@ class Admin extends CI_Controller {
 	}
 
 	public function charts() {
-		$this->load->view('admin/4');  // Charts page
+		$data = array('charts' => 'true');
+		$this->load->view('admin/4', $data);  // Using 4.php for charts
 	}
 
 	public function tables() {
-		$this->load->view('admin/7');  // Tables page
+		$data = array('tables' => 'true');
+		$this->load->view('admin/7', $data);  // Using 7.php for tables
 	}
 
 	public function forms() {
@@ -111,5 +131,119 @@ class Admin extends CI_Controller {
 
 	public function rtl() {
 		$this->load->view('admin/6');  // RTL Dashboard page
+	}
+
+	public function add_runner() {
+		$data = array(
+			'add_runner' => 'true'
+		);
+		$this->load->view('admin/add_runner', $data);
+	}
+
+	public function save_runner() {
+		$this->load->model('Runner');
+		
+		$data = array(
+			'name' => $this->input->post('name'),
+			'email' => $this->input->post('email'),
+			'phone' => $this->input->post('phone'),
+			'dob' => $this->input->post('dob'),
+			'gender' => $this->input->post('gender'),
+			'emergency_contact' => $this->input->post('emergency_contact'),
+			'emergency_phone' => $this->input->post('emergency_phone'),
+			'registration_date' => date('Y-m-d')
+		);
+
+		// For now, just redirect since we don't have the database set up
+		redirect('admin/manage_runners');
+	}
+
+	public function profile() {
+		$this->load->model('Member');
+		$user_id = $this->session->userdata('user_id');
+		
+		$data = array(
+			'profile' => 'true',
+			'user' => $this->Member->get_member($user_id)
+		);
+		
+		$this->load->view('admin/profile', $data);
+	}
+
+	public function update_profile() {
+		$this->load->model('Member');
+		$user_id = $this->session->userdata('user_id');
+		
+		$data = array(
+			'username' => $this->input->post('username'),
+			'email' => $this->input->post('email'),
+			'name' => $this->input->post('name'),
+			'phone' => $this->input->post('phone')
+		);
+		
+		// For now just redirect since we don't have the database set up
+		redirect('admin/profile');
+	}
+
+	public function upload_profile_pic() {
+		$config['upload_path'] = './uploads/profile/';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png';
+		$config['max_size'] = 2048; // 2MB max
+		$config['file_name'] = 'profile_' . $this->session->userdata('user_id');
+		
+		// Create directory if it doesn't exist
+		if (!is_dir('uploads/profile')) {
+			mkdir('./uploads/profile', 0777, TRUE);
+		}
+		
+		$this->load->library('upload', $config);
+		
+		if (!$this->upload->do_upload('profile_pic')) {
+			$this->session->set_flashdata('error', $this->upload->display_errors());
+		} else {
+			$upload_data = $this->upload->data();
+			
+			// Update user profile with new image
+			$this->load->model('Member');
+			$this->Member->update_profile_pic($this->session->userdata('user_id'), $upload_data['file_name']);
+			
+			$this->session->set_flashdata('success', 'Profile picture updated successfully');
+		}
+		
+		redirect('admin/profile');
+	}
+
+	public function print_registration_form() {
+		// Load PDF library
+		$this->load->library('pdf');
+		
+		// Create new PDF document
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		
+		// Set document information
+		$pdf->SetCreator('Code Sprinters');
+		$pdf->SetAuthor('Marathon Admin');
+		$pdf->SetTitle('Runner Registration Form');
+		
+		// Remove default header/footer
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		
+		// Set margins
+		$pdf->SetMargins(15, 15, 15);
+		
+		// Add a page
+		$pdf->AddPage();
+		
+		// Get the template path
+		$template_path = FCPATH . 'assets/pdfs/Registration Signup Form Template.pdf';
+		
+		// Import the template as background
+		$pdf->setSourceFile($template_path);
+		$tplIdx = $pdf->importPage(1);
+		$pdf->useTemplate($tplIdx);
+		
+		// Output the PDF
+		$pdf->Output('runner_registration_form.pdf', 'I');
 	}
 }
