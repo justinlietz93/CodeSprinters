@@ -333,15 +333,6 @@ Alternative options for Mac:
    - Check database credentials in `site/application/config/database.php`
    - For permission errors: `sudo mysql -u root -e "GRANT ALL ON phpclass.* TO 'dbuser'@'localhost';"`
 
-4. **File Permissions**
-   - Cache directory needs to be writable: `chmod -R 777 site/application/cache/`
-   - On Linux/Mac: `sudo chown -R www-data:www-data site/` (for Apache)
-
-5. **Docker Issues**
-   - Ensure Docker daemon is running
-   - Check container logs: `docker-compose logs`
-   - Verify ports are not in use: `netstat -tulpn | grep 8000`
-
 #### Platform-Specific Notes
 
 **Windows:**

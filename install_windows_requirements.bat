@@ -1,11 +1,20 @@
 @echo off
 echo Installing requirements for Windows...
+:: Check for XAMPP
+if not exist "C:\xampp" (
+    echo XAMPP not found. Please install XAMPP first:
+    echo 1. Download from https://www.apachefriends.org/
+    echo 2. Install with PHP 8.2
+    echo 3. Run this script again
+    pause
+    exit /b 1
+)
 
 :: Check if PHP is installed
 where php >nul 2>nul
 if %ERRORLEVEL% NEQ 0 (
     echo PHP not found. Downloading PHP...
-    powershell -Command "Invoke-WebRequest -Uri 'https://windows.php.net/downloads/releases/php-8.2.16-Win32-vs16-x64.zip' -OutFile 'php.zip'"
+    powershell -Command "Invoke-WebRequest -Uri 'https://windows.php.net/downloads/releases/latest/php-8.4-nts-Win32-vs17-x86-latest.zip' -OutFile 'php.zip'"
     echo Extracting PHP...
     powershell -Command "Expand-Archive -Path 'php.zip' -DestinationPath 'C:\php' -Force"
     echo Adding PHP to PATH...
