@@ -6,6 +6,14 @@ ini_set('display_errors', 0);
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
+| Change History
+| ----------------------------------------------------------------------------------
+| Date         | Developer      | Description
+| ----------------------------------------------------------------------------------
+| 2024-02-17  | Justin         | Added base url
+
+
+
 |--------------------------------------------------------------------------
 | Base Site URL
 |--------------------------------------------------------------------------
@@ -26,12 +34,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | If you need to allow multiple domains, remember that this file is still
 | a PHP script and you can easily do that on your own.
 |
-*/
-// Detect if using PHP's built-in server
+// Detect if using PHPs builtin server
 if (php_sapi_name() === 'cli-server') {
     $config['base_url'] = 'http://localhost:8000/';
 } else {
-    $config['base_url'] = 'http://localhost/site/';
+    // Check if using HTTPS
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+    
+    // Get the server name and port
+    $server_name = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?? 'localhost';
+    
+    // Get the directory path
+    $directory = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+    $directory = $directory === '/' ? '' : $directory;
+    
+    $config['base_url'] = $protocol . $server_name . $directory . '/';
 }
 
 /*

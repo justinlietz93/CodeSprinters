@@ -1,3 +1,5 @@
+-- This is just a test data schema to get the website running
+
 -- Create User Types table
 CREATE TABLE IF NOT EXISTS UserTypes (
     UserTypeId INT PRIMARY KEY AUTO_INCREMENT,

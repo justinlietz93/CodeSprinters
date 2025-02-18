@@ -1,3 +1,12 @@
+<?php
+/**
+ * | Change History
+ * |----------------------------------------------------------------------------------
+ * | Date         | Developer      | Description
+ * |----------------------------------------------------------------------------------
+ * | 2024-02-17  | Justin         | Wired up the update marathon page
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +45,8 @@
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <?php
-            $this->load->view('includes/header');
-            $this->load->view('includes/menu');
+                $this->load->view('includes/header');
+                $this->load->view('includes/menu');
             ?>
         </nav>
 

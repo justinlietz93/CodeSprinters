@@ -1,11 +1,19 @@
+# Date         | Developer      | Description
+#----------------------------------------------------------------------------------
+# 2024-02-17  | Justin         | Reconfigured the .htaccess file
+
 RewriteEngine On
 RewriteBase /site/
+
+# Allow direct access to assets directory and its contents
+RewriteCond %{REQUEST_URI} ^/site/assets/
+RewriteRule ^ - [L]
 
 # Allow any files or directories that exist
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^ index.php [QSA,L]
+RewriteRule ^(.*)$ index.php/$1 [L]
 
 # Suppress PHP deprecation warnings
 php_flag display_startup_errors off

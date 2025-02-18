@@ -1,3 +1,12 @@
+<?php
+/**
+ * | Change History
+ * |----------------------------------------------------------------------------------
+ * | Date         | Developer      | Description
+ * |----------------------------------------------------------------------------------
+ * | 2024-02-17  | Justin         | Wired up the manage runners page
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +36,21 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+    .sortable {
+        cursor: pointer;
+    }
+    .sortable:hover {
+        background-color: #f5f5f5;
+    }
+    .sort-asc .fa-sort:before {
+        content: "\f0de"; /* fa-sort-asc */
+    }
+    .sort-desc .fa-sort:before {
+        content: "\f0dd"; /* fa-sort-desc */
+    }
+    </style>
+
 </head>
 
 <body>
@@ -46,74 +70,59 @@
             <div class="container-fluid">
 
                 <div class="row">
-                    <div class="col-lg-6">
-                        <h2>Manage Runners</h2>
-                        <div class="table-responsive">
-                            <div class="form-group">
-                                <label>Select a Marathon</label>
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Manage Runners
+                        </h1>
+                        
+                        <!-- Add search bar -->
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-lg-6">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="searchInput" placeholder="Search runners...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
                             </div>
-                            <table class="table table-bordered table-hover table-striped">
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" id="runnersTable">
                                 <thead>
-                                <tr>
-                                    <th>Runner Name</th>
-                                    <th>Email</th>
-                                    <th>Phone number</th>
-                                    <th>Actions</th>
-                                </tr>
+                                    <tr>
+                                        <th class="sortable" data-sort="name">Name <i class="fa fa-sort"></i></th>
+                                        <th class="sortable" data-sort="email">Email <i class="fa fa-sort"></i></th>
+                                        <th class="sortable" data-sort="phone">Phone <i class="fa fa-sort"></i></th>
+                                        <th class="sortable" data-sort="date">Registration Date <i class="fa fa-sort"></i></th>
+                                        <th>Actions</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="active">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr class="success">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr class="warning">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr class="danger">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                    <?php if(isset($runners) && is_array($runners)): ?>
+                                        <?php foreach($runners as $runner): ?>
+                                            <tr>
+                                                <td><?php echo $runner['name']; ?></td>
+                                                <td><?php echo $runner['email']; ?></td>
+                                                <td><?php echo $runner['phone']; ?></td>
+                                                <td><?php echo $runner['registrationDate']; ?></td>
+                                                <td>
+                                                    <a href="<?php echo site_url('admin/edit_runner/'.$runner['runnerID']); ?>" class="btn btn-primary btn-sm">Edit</a>
+                                                    <a href="<?php echo site_url('admin/delete_runner/'.$runner['runnerID']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="5">No runners found</td>
+                                        </tr>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
+                        <a href="<?php echo site_url('admin/add_runner'); ?>" class="btn btn-success">Add New Runner</a>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -132,6 +141,54 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?=asset_url()?>js/bootstrap.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+        // Search functionality
+        $("#searchInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#runnersTable tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+        // Sorting functionality
+        $(".sortable").click(function() {
+            var table = $(this).parents('table').eq(0);
+            var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()));
+            this.asc = !this.asc;
+            if (!this.asc) {
+                rows = rows.reverse();
+            }
+            
+            // Update sort icons
+            table.find('th').removeClass('sort-asc sort-desc');
+            $(this).addClass(this.asc ? 'sort-asc' : 'sort-desc');
+            
+            for (var i = 0; i < rows.length; i++) {
+                table.append(rows[i]);
+            }
+        });
+
+        function comparer(index) {
+            return function(a, b) {
+                var valA = getCellValue(a, index), valB = getCellValue(b, index);
+                if (isDate(valA) && isDate(valB)) {
+                    return new Date(valA) - new Date(valB);
+                }
+                return valA.toString().localeCompare(valB);
+            };
+        }
+
+        function getCellValue(row, index) {
+            return $(row).children('td').eq(index).text();
+        }
+
+        function isDate(value) {
+            return !isNaN(Date.parse(value));
+        }
+    });
+    </script>
 
 </body>
 
