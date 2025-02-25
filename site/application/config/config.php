@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | If you need to allow multiple domains, remember that this file is still
 | a PHP script and you can easily do that on your own.
 |
-// Detect if using PHPs builtin server
+// Detect if using PHPs builtin server */
 if (php_sapi_name() === 'cli-server') {
     $config['base_url'] = 'http://localhost:8000/';
 } else {

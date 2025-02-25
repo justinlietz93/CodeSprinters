@@ -52,22 +52,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                    <a class="navbar-brand topnav" href="#">RunMaster</a>
+                    <a class="navbar-brand topnav" style="margin-left: -300px;"  href="#">Code Sprinters</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" style="margin-left: 390px;">
                     <li>
-                        <a href="#about">About</a>
+                        <a href="#about">Races</a>
                     </li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="#services">Training</a>
+                    </li>
+                    <li>
+                        <a href="#contact">FAQs</a>
                     </li>
                     <li>
                         <a href="#login">Login</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -85,8 +85,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>Run Master</h1>
-                        <h3>Software that just runs!</h3>
+                        <h1>Code Sprinters</h1>
+                        <h3>Coders who love providing and documenting races and running! </h3>
                     </div>
                 </div>
             </div>
@@ -100,15 +100,15 @@
     <!-- Page Content -->
 
 	<a  name="services"></a>
+    <h1 style="text-align: center; padding: 15px;">Upcoming Races:</h1>
     <div class="content-section-a">
-
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Relax... You're already there!<br>Just One Click!</h2>
-                    <p class="lead">One click of our Software and it will do the running for you!!!</p>
+                    <h2 class="section-heading">St. Patty's 5K</h2>
+                    <button class="lead">Learn More!</>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="<?=asset_url()?>img/ipad.png" alt="">
@@ -129,8 +129,8 @@
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Top Edge AI protection!</h2>
-                    <p class="lead">How do you beat AI when AI comes with infinite Information and best of all, always running?!</p>
+                    <h2 class="section-heading">Spring Fest 5K & 10K</h2>
+                    <button class="lead">Learn More!</>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                     <img class="img-responsive" src="<?=asset_url()?>img/dog.png" alt="">
@@ -151,8 +151,8 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Finished using our Software?<br>Don't worry, we got your back for LIFE!</h2>
-                    <p class="lead">Run Master continues to update and find faster ways to improve all of your Software Needs for LIFE!</p>
+                    <h2 class="section-heading">Firework 4th Marathon</h2>
+                    <button class="lead">Learn More!</>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="<?=asset_url()?>img/phones.png" alt="">
@@ -222,7 +222,7 @@
 
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>Connect to Run Master</h2>
+                    <h2>Connect with Code Sprinters</h2>
                 </div>
             </div>
 
@@ -243,15 +243,15 @@
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#about">About</a>
+                            <a href="#about">Races</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#services">Services</a>
+                            <a href="#services">Training</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#contact">Contact</a>
+                            <a href="#contact">FAQs</a>
                         </li>
                     </ul>
                     <p class="copyright text-muted small">Copyright &copy; HThao's INC 2023. All Rights Reserved</p>
