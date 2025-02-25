@@ -86,7 +86,7 @@
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h1>Code Sprinters</h1>
-                        <h3>Coders who love providing and documenting races and running! </h3>
+                        <h3>We create the ultimate platform for runners, offering seamless race management and real-time tracking! </h3>
                     </div>
                 </div>
             </div>
