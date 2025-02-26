@@ -52,19 +52,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                    <a class="navbar-brand topnav" style="margin-left: -300px;"  href="#">Code Sprinters</a>
+                    <a class="navbar-brand topnav" href="#" style="padding-left: -200px;">Code Sprinters</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right" style="margin-left: 390px;">
+                <ul class="nav navbar-nav navbar-right" style="padding-left: 215px;">
                     <li>
-                        <a href="#about">Races</a>
+                        <a href="#races">Races</a>
                     </li>
                     <li>
-                        <a href="#services">Training</a>
+                        <a href="#training">Training</a>
                     </li>
                     <li>
-                        <a href="#contact">FAQs</a>
+                        <a href="#faqs">FAQs</a>
                     </li>
                     <li>
                         <a href="#login">Login</a>
@@ -99,7 +99,7 @@
 
     <!-- Page Content -->
 
-	<a  name="services"></a>
+	<a  name="races"></a>
     <h1 style="text-align: center; padding: 15px;">Upcoming Races:</h1>
     <div class="content-section-a">
         <div class="container">
@@ -108,7 +108,9 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">St. Patty's 5K</h2>
-                    <button class="lead">Learn More!</>
+                    <a href="#login">
+                    <button class="lead"> Login/Sign Up for Details! </button>
+                    </a>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="<?=asset_url()?>img/ipad.png" alt="">
@@ -130,7 +132,9 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Spring Fest 5K & 10K</h2>
-                    <button class="lead">Learn More!</>
+                    <a href="#login">
+                    <button class="lead"> Login/Sign Up for Details! </button>
+                    </a>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                     <img class="img-responsive" src="<?=asset_url()?>img/dog.png" alt="">
@@ -152,7 +156,9 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Firework 4th Marathon</h2>
-                    <button class="lead">Learn More!</>
+                    <a href="#login">
+                    <button class="lead"> Login/Sign Up for Details! </button>
+                    </a>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="<?=asset_url()?>img/phones.png" alt="">
@@ -163,8 +169,96 @@
         <!-- /.container -->
 
     </div>
+    <a  name="training"></a>
+    <h1 style="text-align: center; padding: 15px;">Training Guides:</h1>
+    <div class="content-section-a">
+        <div class="container">
+            <class="row">
+                    <div class="clearfix"></div>
+                        <a href="https://www.halhigdon.com/training/5k-training/" target="_blank">
+                            <h2 class="section-heading" style="text-align: center;">5K Training</h2><br>
+                        </a>
+                        <a href="https://www.halhigdon.com/training/10k-training/" target="_blank">
+                            <h2 class="section-heading" style="text-align: center;">10K Training</h2><br>
+                        </a>    
+                        <a href="https://www.halhigdon.com/training/half-marathon-training/" target="_blank">
+                            <h2 class="section-heading" style="text-align: center;">Half-Marathon Training</h2><br>
+                        </a>
+                        <a href="https://www.halhigdon.com/training/post-marathon-recovery/" target="_blank">
+                            <h2 class="section-heading" style="text-align: center;">Post-Race Recovery</h2><br>
+                        </a>
+               
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+
+
+    <a  name="faqs"></a>
+    <h1 style="text-align: center; padding: 15px;">FAQs:</h1>
+    <div class="content-section-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">How can I contact a Code Sprinter?</h2>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <p class="lead" style="margin-top: 70px;">You can contact us by email at...</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
     <!-- /.content-section-a -->
 
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Question 2</h2>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                <p class="lead" style="margin-top: 70px;">Answer...</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Question 3</h2>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <p class="lead" style="margin-top: 70px;">Answer 3...</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+
+
+    <!-- /.content-section-a -->
     <a  name="login"></a>
     <div class="content-section-b">
 
@@ -243,15 +337,15 @@
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#about">Races</a>
+                            <a href="#races">Races</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#services">Training</a>
+                            <a href="#training">Training</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#contact">FAQs</a>
+                            <a href="#faqs">FAQs</a>
                         </li>
                     </ul>
                     <p class="copyright text-muted small">Copyright &copy; HThao's INC 2023. All Rights Reserved</p>

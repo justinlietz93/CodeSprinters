@@ -3,10 +3,10 @@
 # 2024-02-17  | Justin         | Reconfigured the .htaccess file
 
 RewriteEngine On
-RewriteBase /site/
+RewriteBase /CodeSprinters/site/
 
 # Allow direct access to assets directory and its contents
-RewriteCond %{REQUEST_URI} ^/site/assets/
+RewriteCond %{REQUEST_URI} ^/CodeSprinters/site/assets/
 RewriteRule ^ - [L]
 
 # Allow any files or directories that exist

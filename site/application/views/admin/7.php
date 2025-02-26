@@ -89,19 +89,19 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Spring Marathon 2024</td>
+                                        <td>St. Pattys 5K</td>
                                         <td>1,265</td>
                                         <td>84.3%</td>
                                         <td>$63,250</td>
                                     </tr>
                                     <tr>
-                                        <td>Summer Half Marathon</td>
+                                        <td>Spring Fest 5K & 10K</td>
                                         <td>861</td>
                                         <td>71.8%</td>
                                         <td>$34,440</td>
                                     </tr>
                                     <tr>
-                                        <td>Winter 10K</td>
+                                        <td>Firework 4th Marathon</td>
                                         <td>665</td>
                                         <td>95.0%</td>
                                         <td>$19,950</td>

@@ -37,6 +37,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // Detect if using PHPs builtin server */
 if (php_sapi_name() === 'cli-server') {
     $config['base_url'] = 'http://localhost:8000/';
+} else if (strpos($_SERVER['DOCUMENT_ROOT'], 'xampp') !== false){
+    $config['base_url'] = 'http://localhost/CodeSprinters/site/';
 } else {
     // Check if using HTTPS
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';

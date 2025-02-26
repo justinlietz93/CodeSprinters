@@ -247,18 +247,18 @@
         // Race Participation Bar Chart
         var barData = [
             {
-                label: "Spring Marathon",
+                label: "St. Patty 5K",
                 data: [[1, 1265]],
                 bars: { show: true }
             },
             {
-                label: "Summer Half",
-                data: [[2, 861]],
+                label: "Spring Fest 5K & 10K",
+                data: [[1, 861]],
                 bars: { show: true }
             },
             {
-                label: "Winter 10K",
-                data: [[3, 665]],
+                label: "Firework 4th Marathon",
+                data: [[2, 665]],
                 bars: { show: true }
             }
         ];

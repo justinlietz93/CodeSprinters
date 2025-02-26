@@ -19,24 +19,24 @@ class Race extends CI_Model {
         return array(
             array(
                 'raceID' => 1,
-                'raceName' => 'Spring Marathon 2024',
-                'raceLocation' => 'Central Park',
-                'raceDateTime' => '2024-04-15',
-                'raceDescription' => 'Annual spring marathon'
+                'raceName' => 'St. Pattys 5K',
+                'raceLocation' => '123 Green Bay Road, Green Bay',
+                'raceDateTime' => '2025-03-17',
+                'raceDescription' => 'Annual marathon. Deadline is March 1st, 2025.'
             ),
             array(
                 'raceID' => 2,
-                'raceName' => 'Summer Half Marathon',
-                'raceLocation' => 'Beach Track',
-                'raceDateTime' => '2024-07-01',
-                'raceDescription' => 'Scenic beach route'
+                'raceName' => 'Spring Fest 5K & 10K',
+                'raceLocation' => '222 Lake Park Drive, Menasha',
+                'raceDateTime' => '2025-05-10',
+                'raceDescription' => 'Deadline is April 1st, 2025.'
             ),
             array(
                 'raceID' => 3,
-                'raceName' => 'Winter 10K',
-                'raceLocation' => 'Downtown',
-                'raceDateTime' => '2024-12-10',
-                'raceDescription' => 'City center race'
+                'raceName' => 'Firework 4th Marathon',
+                'raceLocation' => '987 Fondy Lane, Fond du Lac',
+                'raceDateTime' => '2025-07-04',
+                'raceDescription' => 'Deadline is May 31st, 2025.'
             )
         );
     }
