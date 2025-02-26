@@ -113,7 +113,7 @@
                     </a>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="<?=asset_url()?>img/ipad.png" alt="">
+                    <img class="img-responsive" src="<?=asset_url()?>img/ipad.png" alt="" height="350" width="350">
                 </div>
             </div>
 
@@ -137,7 +137,7 @@
                     </a>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="<?=asset_url()?>img/dog.png" alt="">
+                    <img class="img-responsive" src="<?=asset_url()?>img/dog.png" alt="" height="350" width="350">
                 </div>
             </div>
 
@@ -161,7 +161,7 @@
                     </a>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="<?=asset_url()?>img/phones.png" alt="">
+                    <img class="img-responsive" src="<?=asset_url()?>img/firework.jpg" alt="" height="350" width="350">
                 </div>
             </div>
 
@@ -237,11 +237,8 @@
 
     </div>
     <!-- /.content-section-b -->
-
     <div class="content-section-a">
-
         <div class="container">
-
             <div class="row">
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
@@ -249,18 +246,40 @@
                     <h2 class="section-heading">Question 3</h2>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <p class="lead" style="margin-top: 70px;">Answer 3...</p>
+                <p class="lead" style="margin-top: 70px;">Answer...</p>
                 </div>
             </div>
 
         </div>
         <!-- /.container -->
 
+    </div>
+    <!-- /.content-section-a -->
+    <div class="content-section-b">
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <h2 class="section-heading">Question 4</h2>
+        </div>
+        <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+        <p class="lead" style="margin-top: 70px;">Answer...</p>
+        </div>
+    </div>
+
+</div>
+<!-- /.container -->
+
+</div>
+
 
 
     <!-- /.content-section-a -->
     <a  name="login"></a>
-    <div class="content-section-b">
+    <div class="content-section-a">
 
         <div class="container">
             <div class="row">
@@ -309,9 +328,8 @@
     </div>
 
 
-	<a  name="contact"></a>
+	
     <div class="banner">
-
         <div class="container">
 
             <div class="row">
