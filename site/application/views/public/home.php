@@ -52,22 +52,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                    <a class="navbar-brand topnav" href="#" style="padding-left: -200px;">Code Sprinters</a>
+                    <a class="navbar-brand topnav" href="#" style="padding-left: -200px; color: black;">Code Sprinters</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right" style="padding-left: 215px;">
                     <li>
-                        <a href="#races">Races</a>
+                        <a href="#races" style="color: black;">Races</a>
                     </li>
                     <li>
-                        <a href="#training">Training</a>
+                        <a href="#training" style="color: black;">Training</a>
                     </li>
                     <li>
-                        <a href="#faqs">FAQs</a>
+                        <a href="#faqs" style="color: black;">FAQs</a>
                     </li>
                     <li>
-                        <a href="#login">Login</a>
+                        <a href="#login" style="color: black;">Login</a>
                     </li>
                 </ul>
             </div>
