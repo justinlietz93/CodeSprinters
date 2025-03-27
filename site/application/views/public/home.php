@@ -207,7 +207,7 @@
                     <h2 class="section-heading">How can I contact a Code Sprinter?</h2>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <p class="lead" style="margin-top: 70px;">You can contact us by email at...</p>
+                <p class="lead" style="margin-top: 70px;">You can contact us by email at codesprinters@gmail.com. We will try our best to respond within 24-48 hours. We would love to hear feedback on our site. </p>
                 </div>
             </div>
 
@@ -225,10 +225,10 @@
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Question 2</h2>
+                    <h2 class="section-heading">What are the benefits of creating an account with CodeSprinters?</h2>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                <p class="lead" style="margin-top: 70px;">Answer...</p>
+                <p class="lead" style="margin-top: 70px;"> You will be added to our weekly newsletter! You will get emails from us that include race events, race updates, and much more!</p>
                 </div>
             </div>
 
@@ -243,10 +243,10 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Question 3</h2>
+                    <h2 class="section-heading">Where are all of the races located?</h2>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <p class="lead" style="margin-top: 70px;">Answer...</p>
+                <p class="lead" style="margin-top: 70px;">All of the races are based in the Fox Valley. Therefore, our site will only display race results and sign ups for races in the Fox Valley. If you have any race inqueries, feel free to contact us. </p>
                 </div>
             </div>
 
@@ -263,10 +263,10 @@
         <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
             <hr class="section-heading-spacer">
             <div class="clearfix"></div>
-            <h2 class="section-heading">Question 4</h2>
+            <h2 class="section-heading">Can anyone sign up?</h2>
         </div>
         <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-        <p class="lead" style="margin-top: 70px;">Answer...</p>
+        <p class="lead" style="margin-top: 70px;">Yes, everyone is allowed to sign up! However, keep in mind that the weekly newsletter will only include details on race events in the Fox Valley!</p>
         </div>
     </div>
 
