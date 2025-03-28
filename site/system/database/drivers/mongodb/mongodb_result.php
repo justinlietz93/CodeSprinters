@@ -57,9 +57,7 @@ class CI_DB_mongodb_result extends CI_DB_result {
 	 */
 	public function num_rows()
 	{
-		return is_int($this->num_rows)
-			? $this->num_rows
-			: $this->num_rows = mongodb_num_rows($this->result_id);
+		return $this->result_id->count();
 	}
 
 	// --------------------------------------------------------------------
@@ -85,72 +83,8 @@ class CI_DB_mongodb_result extends CI_DB_result {
 	 */
 	public function list_fields()
 	{
-		$field_names = array();
-		mongodb_field_seek($this->result_id, 0);
-		while ($field = mongodb_fetch_field($this->result_id))
-		{
-			$field_names[] = $field->name;
-		}
-
-		return $field_names;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Field data
-	 *
-	 * Generates an array of objects containing field meta-data
-	 *
-	 * @return	array
-	 */
-	public function field_data()
-	{
-		$retval = array();
-		for ($i = 0, $c = $this->num_fields(); $i < $c; $i++)
-		{
-			$field = mongodb_fetch_field($this->result_id, $i);
-
-			$retval[$i]		= new stdClass();
-			$retval[$i]->name	= $field->name;
-			$retval[$i]->type	= $field->type;
-			$retval[$i]->max_length	= $field->max_length;
-		}
-
-		return $retval;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Free the result
-	 *
-	 * @return	void
-	 */
-	public function free_result()
-	{
-		if (is_resource($this->result_id))
-		{
-			mongodb_free_result($this->result_id);
-			$this->result_id = FALSE;
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Data Seek
-	 *
-	 * Moves the internal pointer to the desired offset. We call
-	 * this internally before fetching results to make sure the
-	 * result set starts at zero.
-	 *
-	 * @param	int	$n
-	 * @return	bool
-	 */
-	public function data_seek($n = 0)
-	{
-		return mongodb_data_seek($this->result_id, $n);
+		// MongoDB does not have a direct method for listing fields
+		return array_keys((array) $this->result_id->toArray()[0]);
 	}
 
 	// --------------------------------------------------------------------
@@ -164,7 +98,7 @@ class CI_DB_mongodb_result extends CI_DB_result {
 	 */
 	protected function _fetch_assoc()
 	{
-		return mongodb_fetch_assoc($this->result_id);
+		return $this->result_id->toArray();
 	}
 
 	// --------------------------------------------------------------------
@@ -179,20 +113,7 @@ class CI_DB_mongodb_result extends CI_DB_result {
 	 */
 	protected function _fetch_object($class_name = 'stdClass')
 	{
-		$row = mongodb_fetch_object($this->result_id);
-
-		if ($class_name === 'stdClass' OR ! $row)
-		{
-			return $row;
-		}
-
-		$class_name = new $class_name();
-		foreach ($row as $key => $value)
-		{
-			$class_name->$key = $value;
-		}
-
-		return $class_name;
+		return $this->result_id->toArray();
 	}
 
 }

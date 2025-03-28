@@ -108,34 +108,13 @@ class CI_DB_mongodb_driver extends CI_DB {
 	 */
 	public function db_connect($persistent = FALSE)
 	{
-		$this->conn_id = ($persistent)
-				? mongodb_pconnect($this->hostname, $this->username, $this->password)
-				: mongodb_connect($this->hostname, $this->username, $this->password);
-
-		if ( ! $this->conn_id)
-		{
+		try {
+			$this->conn_id = new MongoDB\Client($this->dsn);
+			return $this->conn_id;
+		} catch (Exception $e) {
+			log_message('error', 'MongoDB connection failed: '.$e->getMessage());
 			return FALSE;
 		}
-
-		// ----------------------------------------------------------------
-
-		// Select the DB... assuming a database name is specified in the config file
-		if ($this->database !== '' && ! $this->db_select())
-		{
-			log_message('error', 'Unable to select database: '.$this->database);
-
-			return ($this->db_debug === TRUE)
-				? $this->display_error('db_unable_to_select', $this->database)
-				: FALSE;
-		}
-
-		// Determine how identifiers are escaped
-		$query = $this->query('SELECT CASE WHEN (@@OPTIONS | 256) = @@OPTIONS THEN 1 ELSE 0 END AS qi');
-		$query = $query->row_array();
-		$this->_quoted_identifier = empty($query) ? FALSE : (bool) $query['qi'];
-		$this->_escape_char = ($this->_quoted_identifier) ? '"' : array('[', ']');
-
-		return $this->conn_id;
 	}
 
 	// --------------------------------------------------------------------
@@ -148,21 +127,8 @@ class CI_DB_mongodb_driver extends CI_DB {
 	 */
 	public function db_select($database = '')
 	{
-		if ($database === '')
-		{
-			$database = $this->database;
-		}
-
-		// Note: Escaping is required in the event that the DB name
-		// contains reserved characters.
-		if (mongodb_select_db('['.$database.']', $this->conn_id))
-		{
-			$this->database = $database;
-			$this->data_cache = array();
-			return TRUE;
-		}
-
-		return FALSE;
+		$this->database = $database ?: $this->database;
+		return TRUE;
 	}
 
 	// --------------------------------------------------------------------
@@ -175,100 +141,8 @@ class CI_DB_mongodb_driver extends CI_DB {
 	 */
 	protected function _execute($sql)
 	{
-		return mongodb_query($sql, $this->conn_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Begin Transaction
-	 *
-	 * @return	bool
-	 */
-	protected function _trans_begin()
-	{
-		return $this->simple_query('BEGIN TRAN');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Commit Transaction
-	 *
-	 * @return	bool
-	 */
-	protected function _trans_commit()
-	{
-		return $this->simple_query('COMMIT TRAN');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Rollback Transaction
-	 *
-	 * @return	bool
-	 */
-	protected function _trans_rollback()
-	{
-		return $this->simple_query('ROLLBACK TRAN');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Affected Rows
-	 *
-	 * @return	int
-	 */
-	public function affected_rows()
-	{
-		return mongodb_rows_affected($this->conn_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Insert ID
-	 *
-	 * Returns the last id created in the Identity column.
-	 *
-	 * @return	string
-	 */
-	public function insert_id()
-	{
-		$query = version_compare($this->version(), '8', '>=')
-			? 'SELECT SCOPE_IDENTITY() AS last_id'
-			: 'SELECT @@IDENTITY AS last_id';
-
-		$query = $this->query($query);
-		$query = $query->row();
-		return $query->last_id;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set client character set
-	 *
-	 * @param	string	$charset
-	 * @return	bool
-	 */
-	protected function _db_set_charset($charset)
-	{
-		return (ini_set('mongodb.charset', $charset) !== FALSE);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Version number query string
-	 *
-	 * @return	string
-	 */
-	protected function _version()
-	{
-		return "SELECT SERVERPROPERTY('ProductVersion') AS ver";
+		// MongoDB does not use SQL; implement query logic using MongoDB methods
+		return $this->conn_id->{$this->database}->command($sql);
 	}
 
 	// --------------------------------------------------------------------
@@ -283,17 +157,7 @@ class CI_DB_mongodb_driver extends CI_DB {
 	 */
 	protected function _list_tables($prefix_limit = FALSE)
 	{
-		$sql = 'SELECT '.$this->escape_identifiers('name')
-			.' FROM '.$this->escape_identifiers('sysobjects')
-			.' WHERE '.$this->escape_identifiers('type')." = 'U'";
-
-		if ($prefix_limit !== FALSE && $this->dbprefix !== '')
-		{
-			$sql .= ' AND '.$this->escape_identifiers('name')." LIKE '".$this->escape_like_str($this->dbprefix)."%' "
-				.sprintf($this->_like_escape_str, $this->_like_escape_chr);
-		}
-
-		return $sql.' ORDER BY '.$this->escape_identifiers('name');
+		return $this->conn_id->{$this->database}->listCollections();
 	}
 
 	// --------------------------------------------------------------------
