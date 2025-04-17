@@ -67,10 +67,7 @@
                                 <label>Race Location</label>
                                 <input name ="txtLocation" value="<?=$race[0]["raceLocation"] ?>" class="form-control"><br />
 
-                                <label>Race Description</label>
-                                <textarea name="txtDescription" class="form-control"> <?=$race[0]["raceDescription"] ?></textarea><br />
-
-                                <label>Race Date & Time</label>
+                                <label>Race Date</label>
                                 <input name ="txtDate" value="<?=$race[0]["raceDateTime"] ?>" class="form-control"><br />
                             </div>
 

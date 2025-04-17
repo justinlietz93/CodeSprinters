@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Add Marathon</title>
+    <title>Add Race</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=asset_url()?>css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                     <div class="col-lg-12">
 
                         <form method="post" action="/site/admin/add_race" role="form">
-                        <h1>Add Marathon</h1>
+                        <h1>Add Race</h1>
                             <div class="form-group">
                                 <label>Race Name</label>
                                 <input name ="txtName" class="form-control"><br />
@@ -58,16 +58,13 @@
                                 <label>Race Location</label>
                                 <input name ="txtLocation" class="form-control"><br />
 
-                                <label>Race Description</label>
-                                <textarea name="txtDescription" class="form-control"></textarea><br />
 
-                                <label>Race Date & Time</label>
+                                <label>Race Date</label>
                                 <input name ="txtDate"class="form-control"><br />
                             </div>
 
 
                             <button type="submit" class="btn btn-default">Add Race</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
 
                         </form>
                     </div>

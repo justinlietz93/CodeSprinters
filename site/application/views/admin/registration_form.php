@@ -210,8 +210,7 @@
 
                                     <div class="row" style="margin-top: 20px;">
                                         <div class="col-lg-12">
-                                            <button type="submit" class="btn btn-primary">Submit Registration</button>
-                                            <button type="reset" class="btn btn-default">Reset Form</button>
+                                            
                                         </div>
                                     </div>
                                 </form>

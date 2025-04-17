@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Manage Marathons</title>
+    <title>Manage Races</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=asset_url()?>css/bootstrap.min.css" rel="stylesheet">
@@ -54,13 +54,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Manage Marathons
+                            Manage Races
                         </h1>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Marathon Name</th>
+                                        <th>Race Name</th>
                                         <th>Location</th>
                                         <th>Date</th>
                                         <th>Actions</th>
@@ -81,13 +81,13 @@
                                         <?php endforeach; ?>
                                     <?php else: ?>
                                         <tr>
-                                            <td colspan="4">No marathons found</td>
+                                            <td colspan="4">No races found</td>
                                         </tr>
                                     <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
-                        <a href="<?php echo site_url('admin/add_marathon'); ?>" class="btn btn-success">Add New Marathon</a>
+                        <a href="<?php echo site_url('admin/add_marathon'); ?>" class="btn btn-success">Add New Race</a>
                     </div>
                 </div>
                 <!-- /.row -->

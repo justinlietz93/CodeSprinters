@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Landing Page - Start Bootstrap Theme</title>
+    <title>Code Sprinters</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=asset_url()?>css/bootstrap.min.css" rel="stylesheet">
@@ -84,7 +84,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="intro-message">
+                    <div class="intro-message" style="color: white;">
                         <h1>Code Sprinters</h1>
                         <h3>We create the ultimate platform for runners, offering seamless race management and real-time tracking! </h3>
                     </div>
@@ -109,7 +109,7 @@
                     <div class="clearfix"></div>
                     <h2 class="section-heading">St. Patty's 5K</h2>
                     <a href="#login">
-                    <button class="lead"> Login/Sign Up for Details! </button>
+                    <button class="lead" style="padding: 10px; border-radius: 20px;"> Login/Sign Up for Details! </button>
                     </a>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
@@ -133,7 +133,7 @@
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Spring Fest 5K & 10K</h2>
                     <a href="#login">
-                    <button class="lead"> Login/Sign Up for Details! </button>
+                    <button class="lead" style="padding: 10px; border-radius: 20px;"> Login/Sign Up for Details! </button>
                     </a>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
@@ -157,7 +157,7 @@
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Firework 4th Marathon</h2>
                     <a href="#login">
-                    <button class="lead"> Login/Sign Up for Details! </button>
+                    <button class="lead" style="padding: 10px; border-radius: 20px;"> Login/Sign Up for Details! </button>
                     </a>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
@@ -225,10 +225,10 @@
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">What are the benefits of creating an account with CodeSprinters?</h2>
+                    <h2 class="section-heading">Who can login to the site?</h2>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                <p class="lead" style="margin-top: 70px;"> You will be added to our weekly newsletter! You will get emails from us that include race events, race updates, and much more!</p>
+                <p class="lead" style="margin-top: 70px;">Only users who are admin specified can login to the CodeSprinter portal. </p>
                 </div>
             </div>
 
@@ -263,10 +263,10 @@
         <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
             <hr class="section-heading-spacer">
             <div class="clearfix"></div>
-            <h2 class="section-heading">Can anyone sign up?</h2>
+            <h2 class="section-heading">What do admin roles have access to?</h2>
         </div>
         <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-        <p class="lead" style="margin-top: 70px;">Yes, everyone is allowed to sign up! However, keep in mind that the weekly newsletter will only include details on race events in the Fox Valley!</p>
+        <p class="lead" style="margin-top: 70px;">Admin has access to managing races and runners as well as analyzing race demographics. </p>
         </div>
     </div>
 
@@ -293,7 +293,7 @@
                     ?>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-left:250px">
                 <div class="col-lg-1 col-sm-1"></div>
                 <div class="col-lg-4 col-sm-5">
                     <h1>Login</h1>
@@ -308,6 +308,7 @@
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
                 </div>
+                <!--
                 <div class="col-lg-4 col-lg-offset-2 col-sm-5">
                     <h1>Create Account</h1>
                     <?php
@@ -320,6 +321,7 @@
                         echo form_close();
                     ?>
                 </div>
+                <-->
             </div>
 
         </div>
@@ -334,7 +336,7 @@
 
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>Connect with Code Sprinters</h2>
+                    <h2>We are Code Sprinters</h2>
                 </div>
             </div>
 
