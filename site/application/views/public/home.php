@@ -109,7 +109,7 @@
                     <div class="clearfix"></div>
                     <h2 class="section-heading">St. Patty's 5K</h2>
                     <a href="#login">
-                    <button class="lead" style="padding: 10px; border-radius: 20px;"> Login/Sign Up for Details! </button>
+                    <button class="lead" style="padding: 10px; border-radius: 20px;"> Login for Details! </button>
                     </a>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
@@ -133,7 +133,7 @@
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Spring Fest 5K & 10K</h2>
                     <a href="#login">
-                    <button class="lead" style="padding: 10px; border-radius: 20px;"> Login/Sign Up for Details! </button>
+                    <button class="lead" style="padding: 10px; border-radius: 20px;"> Login for Details! </button>
                     </a>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
@@ -157,7 +157,7 @@
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Firework 4th Marathon</h2>
                     <a href="#login">
-                    <button class="lead" style="padding: 10px; border-radius: 20px;"> Login/Sign Up for Details! </button>
+                    <button class="lead" style="padding: 10px; border-radius: 20px;"> Login for Details! </button>
                     </a>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
